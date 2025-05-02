@@ -140,14 +140,7 @@ export interface FileRouteTypes {
   fullPaths: '/' | '/reading' | '/services' | '/work' | '/blog/$id' | '/blog';
   fileRoutesByTo: FileRoutesByTo;
   to: '/' | '/reading' | '/services' | '/work' | '/blog/$id' | '/blog';
-  id:
-    | '__root__'
-    | '/'
-    | '/reading'
-    | '/services'
-    | '/work'
-    | '/blog/$id'
-    | '/blog/';
+  id: '__root__' | '/' | '/reading' | '/services' | '/work' | '/blog/$id' | '/blog/';
   fileRoutesById: FileRoutesById;
 }
 
