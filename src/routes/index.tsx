@@ -6,11 +6,11 @@ export const Route = createFileRoute('/')({
 
 function RouteComponent() {
   return (
-    <>
+    <div className="space-y-4">
       <p className="">
         I’ve always been drawn to the process of building—whether it’s a line of
         code, a user experience, or a community. In April 2024, I joined
-        <strong>The Gym</strong>, a software traineeship program, as a curious
+        <strong> The Gym</strong>, a software traineeship program, as a curious
         software developer trainee. What started as a deep dive into learning
         soon turned into something more. After completing the program, I had the
         privilege of staying on as a software development coach, contributing to
@@ -31,6 +31,6 @@ function RouteComponent() {
         These days, I call Kigali, Rwanda home—a place that continues to shape
         how I see the world and the kind of work I want to do.
       </p>
-    </>
+    </div>
   );
 }
