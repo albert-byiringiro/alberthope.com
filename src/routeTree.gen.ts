@@ -14,8 +14,8 @@ import { Route as rootRoute } from './routes/__root'
 import { Route as WorkImport } from './routes/work'
 import { Route as ServicesImport } from './routes/services'
 import { Route as ReadingImport } from './routes/reading'
-import { Route as BlogImport } from './routes/blog'
 import { Route as IndexImport } from './routes/index'
+import { Route as BlogIdImport } from './routes/blog/$id'
 
 // Create/Update Routes
 
@@ -37,15 +37,15 @@ const ReadingRoute = ReadingImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const BlogRoute = BlogImport.update({
-  id: '/blog',
-  path: '/blog',
-  getParentRoute: () => rootRoute,
-} as any)
-
 const IndexRoute = IndexImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const BlogIdRoute = BlogIdImport.update({
+  id: '/blog/$id',
+  path: '/blog/$id',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -58,13 +58,6 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexImport
-      parentRoute: typeof rootRoute
-    }
-    '/blog': {
-      id: '/blog'
-      path: '/blog'
-      fullPath: '/blog'
-      preLoaderRoute: typeof BlogImport
       parentRoute: typeof rootRoute
     }
     '/reading': {
@@ -88,6 +81,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WorkImport
       parentRoute: typeof rootRoute
     }
+    '/blog/$id': {
+      id: '/blog/$id'
+      path: '/blog/$id'
+      fullPath: '/blog/$id'
+      preLoaderRoute: typeof BlogIdImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -95,52 +95,52 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/blog': typeof BlogRoute
   '/reading': typeof ReadingRoute
   '/services': typeof ServicesRoute
   '/work': typeof WorkRoute
+  '/blog/$id': typeof BlogIdRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/blog': typeof BlogRoute
   '/reading': typeof ReadingRoute
   '/services': typeof ServicesRoute
   '/work': typeof WorkRoute
+  '/blog/$id': typeof BlogIdRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
-  '/blog': typeof BlogRoute
   '/reading': typeof ReadingRoute
   '/services': typeof ServicesRoute
   '/work': typeof WorkRoute
+  '/blog/$id': typeof BlogIdRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/blog' | '/reading' | '/services' | '/work'
+  fullPaths: '/' | '/reading' | '/services' | '/work' | '/blog/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/blog' | '/reading' | '/services' | '/work'
-  id: '__root__' | '/' | '/blog' | '/reading' | '/services' | '/work'
+  to: '/' | '/reading' | '/services' | '/work' | '/blog/$id'
+  id: '__root__' | '/' | '/reading' | '/services' | '/work' | '/blog/$id'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  BlogRoute: typeof BlogRoute
   ReadingRoute: typeof ReadingRoute
   ServicesRoute: typeof ServicesRoute
   WorkRoute: typeof WorkRoute
+  BlogIdRoute: typeof BlogIdRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  BlogRoute: BlogRoute,
   ReadingRoute: ReadingRoute,
   ServicesRoute: ServicesRoute,
   WorkRoute: WorkRoute,
+  BlogIdRoute: BlogIdRoute,
 }
 
 export const routeTree = rootRoute
@@ -154,17 +154,14 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/blog",
         "/reading",
         "/services",
-        "/work"
+        "/work",
+        "/blog/$id"
       ]
     },
     "/": {
       "filePath": "index.tsx"
-    },
-    "/blog": {
-      "filePath": "blog.tsx"
     },
     "/reading": {
       "filePath": "reading.tsx"
@@ -174,6 +171,9 @@ export const routeTree = rootRoute
     },
     "/work": {
       "filePath": "work.tsx"
+    },
+    "/blog/$id": {
+      "filePath": "blog/$id.tsx"
     }
   }
 }
