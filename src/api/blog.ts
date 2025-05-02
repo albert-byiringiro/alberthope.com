@@ -37,3 +37,8 @@ export async function fetchPosts(): Promise<Post[]> {
         throw error;
     }
 }
+
+export function getRandomPosts(posts: Post[], count: number) {
+    const shuffled = [...posts].sort(() => 0.5 - Math.random())
+    return shuffled.slice(0, count)
+}
