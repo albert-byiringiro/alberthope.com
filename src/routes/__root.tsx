@@ -15,27 +15,42 @@ function RootComponent() {
           </Link>
           <ul className="flex space-x-4 text-xs item-center">
             <li>
-              <Link to="/" className="[&.active]:font-bold text-sm transition-colors  hover:text-neutral-600 underline-offset-2 decoration-neutral-400">
+              <Link
+                to="/"
+                className="[&.active]:font-bold text-sm transition-colors  hover:text-neutral-600 underline-offset-2 decoration-neutral-400"
+              >
                 Home
               </Link>
             </li>
             <li>
-              <Link to="/blog" className="[&.active]:font-bold text-sm transition-colors  hover:text-neutral-600 underline-offset-2 decoration-neutral-400">
+              <Link
+                to="/blog"
+                className="[&.active]:font-bold text-sm transition-colors  hover:text-neutral-600 underline-offset-2 decoration-neutral-400"
+              >
                 Blog
               </Link>
             </li>
             <li>
-              <Link to="/reading" className="[&.active]:font-bold text-sm transition-colors  hover:text-neutral-600 underline-offset-2 decoration-neutral-400">
+              <Link
+                to="/reading"
+                className="[&.active]:font-bold text-sm transition-colors  hover:text-neutral-600 underline-offset-2 decoration-neutral-400"
+              >
                 Reading
               </Link>
             </li>
             <li>
-              <Link to="/work" className="[&.active]:font-bold text-sm transition-colors  hover:text-neutral-600 underline-offset-2 decoration-neutral-400">
+              <Link
+                to="/work"
+                className="[&.active]:font-bold text-sm transition-colors  hover:text-neutral-600 underline-offset-2 decoration-neutral-400"
+              >
                 Work
               </Link>
             </li>
             <li>
-              <Link to="/services" className="[&.active]:font-bold text-sm transition-colors  hover:text-neutral-600 underline-offset-2 decoration-neutral-400">
+              <Link
+                to="/services"
+                className="[&.active]:font-bold text-sm transition-colors  hover:text-neutral-600 underline-offset-2 decoration-neutral-400"
+              >
                 Services
               </Link>
             </li>
@@ -43,7 +58,9 @@ function RootComponent() {
         </nav>
       </header>
       <hr />
-      <Outlet />
+      <main className="my-8 grow">
+        <Outlet />
+      </main>
       <TanStackRouterDevtools />
     </div>
   );
