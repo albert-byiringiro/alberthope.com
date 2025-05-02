@@ -1,0 +1,22 @@
+# build artifacts
+dist/
+build/
+coverage/
+
+# dependencies
+node_modules/
+
+# logs
+*.log
+
+# environment variables
+.env
+.env.*
+
+# cache
+.cache/
+
+# Specific files
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
