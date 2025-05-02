@@ -12,6 +12,8 @@
   "dependencies": {
     "@repo/ui": "workspace:*",
     "@tailwindcss/vite": "^4.0.6",
+    "@tanstack/react-router": "^1.119.0",
+    "@tanstack/react-router-devtools": "^1.119.1",
     "lucide-react": "^0.475.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -21,6 +23,7 @@
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
+    "@tanstack/router-plugin": "^1.119.0",
     "@types/node": "^22.13.2",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
