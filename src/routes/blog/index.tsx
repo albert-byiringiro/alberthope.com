@@ -16,7 +16,7 @@ function PokemonList() {
       <ul>
         {posts.map((post) => (
           <li key={post.id} className="mb-4">
-            <Link to={`/blog/$id`} params={{id: post.id}} className="text-blue-500 hover:underline">
+            <Link to={`/blog/$id`} params={{id: `${post.id}`}} className="text-blue-500 hover:underline">
               <h2 className="text-xl font-semibold">{post.title}</h2>
             </Link>
             <p className="text-gray-700">{post.body}</p>
