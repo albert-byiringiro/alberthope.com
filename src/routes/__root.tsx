@@ -1,4 +1,3 @@
-import * as React from 'react'
 import { Outlet, createRootRoute, Link } from '@tanstack/react-router'
 import {TanStackRouterDevtools} from "@tanstack/react-router-devtools"
 
@@ -11,7 +10,7 @@ function RootComponent() {
     <>
       <div className='p-2 flex gap-2'>
         <Link to="/" className='[&.active]:font-bold' >Home</Link> {' '}
-        <Link to="/blog/$id" params={{id: '123'}} className='[&.active]:font-bold' >Home</Link> {' '}
+        <Link to="/blog" className='[&.active]:font-bold' >Blog</Link> {' '}
         <Link to="/reading" className='[&.active]:font-bold' >Reading</Link> {' '}
         <Link to="/work" className='[&.active]:font-bold' >Work</Link> {' '}
         <Link to="/services" activeProps={{

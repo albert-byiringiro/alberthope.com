@@ -15,6 +15,7 @@ import { Route as WorkImport } from './routes/work'
 import { Route as ServicesImport } from './routes/services'
 import { Route as ReadingImport } from './routes/reading'
 import { Route as IndexImport } from './routes/index'
+import { Route as BlogIndexImport } from './routes/blog/index'
 import { Route as BlogIdImport } from './routes/blog/$id'
 
 // Create/Update Routes
@@ -40,6 +41,12 @@ const ReadingRoute = ReadingImport.update({
 const IndexRoute = IndexImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const BlogIndexRoute = BlogIndexImport.update({
+  id: '/blog/',
+  path: '/blog/',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -88,6 +95,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogIdImport
       parentRoute: typeof rootRoute
     }
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof BlogIndexImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -99,6 +113,7 @@ export interface FileRoutesByFullPath {
   '/services': typeof ServicesRoute
   '/work': typeof WorkRoute
   '/blog/$id': typeof BlogIdRoute
+  '/blog': typeof BlogIndexRoute
 }
 
 export interface FileRoutesByTo {
@@ -107,6 +122,7 @@ export interface FileRoutesByTo {
   '/services': typeof ServicesRoute
   '/work': typeof WorkRoute
   '/blog/$id': typeof BlogIdRoute
+  '/blog': typeof BlogIndexRoute
 }
 
 export interface FileRoutesById {
@@ -116,14 +132,22 @@ export interface FileRoutesById {
   '/services': typeof ServicesRoute
   '/work': typeof WorkRoute
   '/blog/$id': typeof BlogIdRoute
+  '/blog/': typeof BlogIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/reading' | '/services' | '/work' | '/blog/$id'
+  fullPaths: '/' | '/reading' | '/services' | '/work' | '/blog/$id' | '/blog'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/reading' | '/services' | '/work' | '/blog/$id'
-  id: '__root__' | '/' | '/reading' | '/services' | '/work' | '/blog/$id'
+  to: '/' | '/reading' | '/services' | '/work' | '/blog/$id' | '/blog'
+  id:
+    | '__root__'
+    | '/'
+    | '/reading'
+    | '/services'
+    | '/work'
+    | '/blog/$id'
+    | '/blog/'
   fileRoutesById: FileRoutesById
 }
 
@@ -133,6 +157,7 @@ export interface RootRouteChildren {
   ServicesRoute: typeof ServicesRoute
   WorkRoute: typeof WorkRoute
   BlogIdRoute: typeof BlogIdRoute
+  BlogIndexRoute: typeof BlogIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
@@ -141,6 +166,7 @@ const rootRouteChildren: RootRouteChildren = {
   ServicesRoute: ServicesRoute,
   WorkRoute: WorkRoute,
   BlogIdRoute: BlogIdRoute,
+  BlogIndexRoute: BlogIndexRoute,
 }
 
 export const routeTree = rootRoute
@@ -157,7 +183,8 @@ export const routeTree = rootRoute
         "/reading",
         "/services",
         "/work",
-        "/blog/$id"
+        "/blog/$id",
+        "/blog/"
       ]
     },
     "/": {
@@ -174,6 +201,9 @@ export const routeTree = rootRoute
     },
     "/blog/$id": {
       "filePath": "blog/$id.tsx"
+    },
+    "/blog/": {
+      "filePath": "blog/index.tsx"
     }
   }
 }
